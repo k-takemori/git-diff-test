@@ -1,0 +1,17 @@
+name: deploy prd
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  production-lambda-function-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: deploy prd
+      run: |
+        echo "deploy prd"
