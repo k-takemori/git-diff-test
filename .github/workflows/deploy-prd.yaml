@@ -1,17 +1,22 @@
 name: deploy prd
 
 on:
-  push:
+  pull_request:
     branches:
-    - main
+      - main
+    types:
+      - closed
 
 jobs:
   deploy-prd:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
 
     steps:
-    - uses: actions/checkout@v1
-
-    - name: deploy prd
+    - name: deploy prd ready
       run: |
-        echo "deploy prd"
+        echo "deploy prd ready"
+
+    - name: deploy prd process
+      run: |
+        echo "deploy prd process"

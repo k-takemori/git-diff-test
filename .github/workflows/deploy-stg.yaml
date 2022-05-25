@@ -1,17 +1,22 @@
 name: deploy stg
 
 on:
-  push:
+  pull_request:
     branches:
-    - staging
+      - staging
+    types:
+      - closed
 
 jobs:
   deploy-stg:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
 
     steps:
-    - uses: actions/checkout@v1
-
-    - name: deploy stg
+    - name: deploy stg ready
       run: |
-        echo "deploy stg"
+        echo "deploy stg ready"
+
+    - name: deploy stg process
+      run: |
+        echo "deploy stg process"
