@@ -6,7 +6,7 @@ on:
     - staging
 
 jobs:
-  production-lambda-function-deploy:
+  deploy-stg:
     runs-on: ubuntu-latest
 
     steps:
