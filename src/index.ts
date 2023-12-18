@@ -33,8 +33,6 @@ const usersList: User[] = [
   },
 ];
 
-var hoge = 1;
-
 const getUser = (id: number) => {
   return usersList.find((user) => user.id == id);
 };
