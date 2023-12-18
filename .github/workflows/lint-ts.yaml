@@ -1,0 +1,16 @@
+name: Lint TypeScript
+
+on:
+  push:
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Install modules
+        run: npm ci
+      - name: Run eslint
+        run: npm run lint
