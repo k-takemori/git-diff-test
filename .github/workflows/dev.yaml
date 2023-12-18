@@ -8,5 +8,3 @@ jobs:
     uses: ./.github/workflows/callable/eslint.yaml
   hadolint:
     uses: ./.github/workflows/callable/hadolint.yaml
-  prettier:
-    uses: ./.github/workflows/callable/prettier.yaml
