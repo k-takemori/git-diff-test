@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: smartrelease-poc-backend
+    container_name: smartrelease-poc-backend
+    ports:
+      - 3000:3000
+    platform: linux/x86_64

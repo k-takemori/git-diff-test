@@ -1,2 +1,0 @@
-babibubebo
-ばびぶべぼ
