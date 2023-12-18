@@ -4,8 +4,8 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: smartrelease-poc-backend
-    container_name: smartrelease-poc-backend
+    image: sample-app
+    container_name: sample-app
     ports:
       - 3000:3000
     platform: linux/x86_64

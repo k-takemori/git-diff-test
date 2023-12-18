@@ -1,4 +1,4 @@
-# SmartReleasePoc の バックエンド
+# sample app
 
 ## 開発環境構築
 
