@@ -5,6 +5,8 @@ on:
 
 jobs:
   eslint:
-    uses: ./.github/workflows/callable/eslint.yaml
+    uses: ./.github/workflows/eslint.yaml
   hadolint:
-    uses: ./.github/workflows/callable/hadolint.yaml
+    uses: ./.github/workflows/hadolint.yaml
+  prettier:
+    uses: ./.github/workflows/prettier.yaml
