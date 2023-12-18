@@ -1,7 +1,7 @@
-name: Lint TypeScript
+name: Lint TypeScript with ESLint
 
 on:
-  push:
+  workflow_call:
 
 jobs:
   eslint:

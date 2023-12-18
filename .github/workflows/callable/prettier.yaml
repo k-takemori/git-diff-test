@@ -1,0 +1,11 @@
+name: Format TypeScript with Prettier
+
+on:
+  workflow_call:
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: prettier
+        run: echo "hello world"

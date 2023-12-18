@@ -1,0 +1,12 @@
+name: Development flow
+
+on:
+  push:
+
+jobs:
+  eslint:
+    uses: ./.github/workflows/callable/eslint.yaml
+  hadolint:
+    uses: ./.github/workflows/callable/hadolint.yaml
+  prettier:
+    uses: ./.github/workflows/callable/prettier.yaml
