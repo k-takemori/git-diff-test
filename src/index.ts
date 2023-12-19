@@ -9,7 +9,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const a = 1;
 interface User {
   id: number;
   name: string;
@@ -34,7 +33,7 @@ const usersList: User[] = [
   },
 ];
 
-const getUser = (id: number) => {
+const getUser = (id) => {
   return usersList.find((user) => user.id == id);
 };
 
