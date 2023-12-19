@@ -9,4 +9,7 @@ jobs:
   hadolint:
     uses: ./.github/workflows/hadolint.yaml
   prettier:
+    needs:
+      - eslint
+      - hadolint
     uses: ./.github/workflows/prettier.yaml
