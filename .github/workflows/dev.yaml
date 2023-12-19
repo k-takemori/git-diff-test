@@ -6,10 +6,13 @@ on:
 jobs:
   eslint:
     uses: ./.github/workflows/eslint.yaml
+  prettier:
+    uses: ./.github/workflows/prettier.yaml
   hadolint:
     uses: ./.github/workflows/hadolint.yaml
-  prettier:
+  build-ts:
     needs:
       - eslint
+      - prettier
       - hadolint
-    uses: ./.github/workflows/prettier.yaml
+    uses: ./.github/workflows/build-ts.yaml
