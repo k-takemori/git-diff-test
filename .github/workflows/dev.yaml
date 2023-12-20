@@ -2,9 +2,11 @@ name: Development flow
 
 on:
   push:
+  pull_request:
 
 jobs:
   git-secrets:
+    if: github.event_name == 'pull_request'
     uses: ./.github/workflows/git-secrets.yaml
   eslint:
     needs:
