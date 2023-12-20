@@ -4,11 +4,19 @@ on:
   push:
 
 jobs:
+  git-secrets:
+    uses: ./.github/workflows/git-secrets.yaml
   eslint:
+    needs:
+      - git-secrets
     uses: ./.github/workflows/eslint.yaml
   prettier:
+    needs:
+      - git-secrets
     uses: ./.github/workflows/prettier.yaml
   hadolint:
+    needs:
+      - git-secrets
     uses: ./.github/workflows/hadolint.yaml
   build-ts:
     needs:
