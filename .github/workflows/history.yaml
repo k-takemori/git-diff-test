@@ -12,13 +12,30 @@ jobs:
         env:
           commits: ${{ github.event.pull_request.commits }}
 
-      - name: Checkout pull request commit
+      - name: Checkout commit num
         uses: actions/checkout@v4
         with:
           fetch-depth: ${{ env.fetch_depth }}
 
-      - name: Display commit log all
+      - name: Checkout depth0
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: depth0
+
+      - name: Checkout depth1
+        uses: actions/checkout@v4
+        with:
+          path: depth1
+
+      - name: Display commit log depth commit num
+        run: git --no-pager log --format="%s %H"
+
+      - name: Display commit log depth0
+        working-directory: depth0
         run: git --no-pager log --all --format="%s %H"
 
-      - name: Display commit log
-        run: git --no-pager log --format="%s %H"
+      - name: Display commit log depth1
+        working-directory: depth1
+        run: git --no-pager log --all --format="%s %H"
+
