@@ -7,7 +7,7 @@ on:
       - Run git-secrets
     types:
       - completed
-    
+
 jobs:
   eslint:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
