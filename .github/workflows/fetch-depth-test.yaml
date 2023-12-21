@@ -25,15 +25,10 @@ jobs:
           fetch-depth: 0
           path: depth0
 
-      - name: Checkout depth 10
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 10
-          path: depth0
-
       - name: Checkout depth 1
         uses: actions/checkout@v4
         with:
+          fetch-depth: 1
           path: depth1
 
       - name: Checkout depth 10
