@@ -52,4 +52,3 @@ jobs:
       - name: Display commit log depth 10
         working-directory: depth10
         run: git --no-pager log --all --format="%s %H"
-

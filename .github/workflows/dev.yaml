@@ -1,7 +1,8 @@
-name: Development flow
+name: Dev workflow
 
 on:
   workflow_run:
+    # git-secrets はワークフロー実行一覧で個別に確認できるようにしたいので、あえて個別に分ける
     workflows:
       - Run git-secrets
     types:
@@ -9,8 +10,22 @@ on:
 
 jobs:
   eslint:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     uses: ./.github/workflows/eslint.yaml
+    with:
+      git-ref: ${{ github.event.workflow_run.head_sha }}
   prettier:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     uses: ./.github/workflows/prettier.yaml
+    with:
+      git-ref: ${{ github.event.workflow_run.head_sha }}
   hadolint:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     uses: ./.github/workflows/hadolint.yaml
+    with:
+      git-ref: ${{ github.event.workflow_run.head_sha }}
+  build-ts:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    uses: ./.github/workflows/build-ts.yaml
+    with:
+      git-ref: ${{ github.event.workflow_run.head_sha }}
