@@ -1,0 +1,24 @@
+name: history
+
+on:
+  pull_request:
+
+jobs:
+  history:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get number of commit in pull request
+        run: echo "fetch_depth=$(( commits + 1 ))" >> "$GITHUB_ENV"
+        env:
+          commits: ${{ github.event.pull_request.commits }}
+
+      - name: Checkout pull request commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.fetch_depth }}
+
+      - name: Display commit log all
+        run: git --no-pager log --all --format="%s %H"
+        
+      - name: Display commit log
+        run: git --no-pager log --format="%s %H"
