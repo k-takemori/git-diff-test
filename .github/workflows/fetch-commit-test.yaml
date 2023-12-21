@@ -1,0 +1,55 @@
+name: fetch-depth test
+
+on:
+  push:
+
+jobs:
+  fetch-depth-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get number of commit in pull request
+        working-directory: ${{ github.workspace }}
+        run: echo "fetch_depth=$(( commits ))" >> "$GITHUB_ENV"
+        env:
+          commits: ${{ github.event.pull_request.commits }}
+
+      - name: Checkout depth commit num
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.fetch_depth }}
+          path: commitnum
+
+      - name: Checkout depth 0
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: depth0
+
+      - name: Checkout depth 1
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          path: depth1
+
+      - name: Checkout depth 10
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
+          path: depth10
+
+      - name: Display commit log depth commit num
+        working-directory: commitnum
+        run: git --no-pager log --format="%s %H"
+
+      - name: Display commit log depth 0
+        working-directory: depth0
+        run: git --no-pager log --all --format="%s %H"
+
+      - name: Display commit log depth 1
+        working-directory: depth1
+        run: git --no-pager log --all --format="%s %H"
+
+      - name: Display commit log depth 10
+        working-directory: depth10
+        run: git --no-pager log --all --format="%s %H"
+

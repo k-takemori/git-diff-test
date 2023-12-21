@@ -1,0 +1,16 @@
+name: Development flow
+
+on:
+  workflow_run:
+    workflows:
+      - Run git-secrets
+    types:
+      - completed
+
+jobs:
+  eslint:
+    uses: ./.github/workflows/eslint.yaml
+  prettier:
+    uses: ./.github/workflows/prettier.yaml
+  hadolint:
+    uses: ./.github/workflows/hadolint.yaml
