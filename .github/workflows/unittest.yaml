@@ -1,10 +1,10 @@
-name: Format TypeScript with Prettier
+name: Run Unit Test
 
 on:
   workflow_call:
 
 jobs:
-  prettier:
+  unittest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,5 +14,5 @@ jobs:
           cache: npm
       - name: Install node_modules
         run: npm ci
-      - name: Run Prettier for check
-        run: npm run lint:prettier
+      - name: Run Jest
+        run: npm run test
