@@ -1,7 +1,7 @@
 name: fetch-depth test
 
 on:
-  push:
+  pull_request:
 
 jobs:
   fetch-depth-test:
