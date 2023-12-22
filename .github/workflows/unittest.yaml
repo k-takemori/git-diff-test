@@ -1,0 +1,24 @@
+name: Run Unit Test
+
+on:
+  workflow_call:
+    inputs:
+      git-ref:
+        required: true
+        type: string
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.git-ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.10.0
+          cache: npm
+      - name: Install node_modules
+        run: npm ci
+      - name: Run Jest
+        run: npm run test
